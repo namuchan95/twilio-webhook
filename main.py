@@ -2,6 +2,8 @@ from flask import Flask
 from twilio.twiml.voice_response import VoiceResponse
 
 app = Flask(__name__)
+import os
+port = int(os.getenv('PORT'))
 
 
 @app.route("/record", methods=['GET', 'POST'])
@@ -22,4 +24,4 @@ def record():
     return str(response)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=port)
